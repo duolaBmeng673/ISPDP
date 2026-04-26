@@ -10,6 +10,10 @@
 
 ## 运行方式
 
+0. 执行：   
+    `mysql -h 127.0.0.1 -P 3306 -u root -p ispdp < schema.sql`  
+    `mysql -h 127.0.0.1 -P 3306 -u root -p ispdp < seed.sql`    
+    就能恢复数据库结构和演示数据。
 1. 安装依赖：`npm install`
 2. 复制环境变量：将 `.env.example` 复制为 `.env`
 3. 修改 `.env` 中的 `SESSION_SECRET` 和 MySQL 连接信息
