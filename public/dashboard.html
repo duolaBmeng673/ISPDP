@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全电商销售平台</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="shop-body">
+<div id="shop-shell" class="shop-shell">
+    <header class="shop-header">
+        <div class="shop-brand">
+            <p class="brand-kicker">Secure Commerce Demo</p>
+            <h1>安全商品销售中心</h1>
+            <p class="brand-subtitle">对应课程中的商品信息列表、购物车、订单确认与付款确认流程，认证部分已接入密码 + RSA 双因子。</p>
+        </div>
+        <div class="shop-actions">
+            <div class="session-pill">
+                <span>当前用户</span>
+                <strong id="session-username">加载中...</strong>
+            </div>
+            <button id="logoutBtn" class="logout-action" type="button">安全退出</button>
+        </div>
+    </header>
+
+    <section class="hero-metrics">
+        <article class="metric-card">
+            <span>在售商品</span>
+            <strong id="metricProducts">0</strong>
+        </article>
+        <article class="metric-card">
+            <span>当前库存</span>
+            <strong id="metricStock">0</strong>
+        </article>
+        <article class="metric-card">
+            <span>分类数量</span>
+            <strong id="metricCategories">0</strong>
+        </article>
+        <article class="metric-card">
+            <span>RSA 状态</span>
+            <strong id="session-rsa-status">加载中...</strong>
+        </article>
+    </section>
+
+    <section class="security-banner">
+        <div>
+            <h2>认证与交易安全</h2>
+            <p>用户会话通过密码、RSA 挑战签名和 `HttpOnly Session` 建立；商品下单后进入待付款确认状态，为后续虚拟银行接口预留对接位。</p>
+        </div>
+        <div class="security-meta">
+            <span>邮箱：<strong id="session-email">加载中...</strong></span>
+            <span>注册时间：<strong id="session-created-at">加载中...</strong></span>
+        </div>
+    </section>
+
+    <main class="shop-layout">
+        <section class="catalog-panel">
+            <div class="panel-header">
+                <div>
+                    <p class="eyebrow">商品信息列表</p>
+                    <h2>课程电商平台商品区</h2>
+                </div>
+                <span class="panel-tip">所有商品由后端 MySQL 提供，可继续扩展查询与筛选。</span>
+            </div>
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+
+        <aside class="checkout-panel">
+            <section class="cart-card">
+                <div class="panel-header">
+                    <div>
+                        <p class="eyebrow">购物车</p>
+                        <h2>已选商品</h2>
+                    </div>
+                    <span class="cart-badge"><span id="cartCount">0</span> 件</span>
+                </div>
+                <div id="cartList" class="cart-list"></div>
+                <div class="cart-total-row">
+                    <span>合计</span>
+                    <strong id="cartTotal">¥0.00</strong>
+                </div>
+            </section>
+
+            <section class="order-card-shell">
+                <div class="panel-header">
+                    <div>
+                        <p class="eyebrow">订单确认</p>
+                        <h2>提交订单</h2>
+                    </div>
+                    <span class="panel-tip">提交后进入待付款确认</span>
+                </div>
+                <form id="orderForm" class="order-form">
+                    <label>
+                        收货人
+                        <input id="shippingName" type="text" maxlength="30" required>
+                    </label>
+                    <label>
+                        联系电话
+                        <input id="shippingPhone" type="text" maxlength="20" required>
+                    </label>
+                    <label>
+                        收货地址
+                        <textarea id="shippingAddress" maxlength="200" required></textarea>
+                    </label>
+                    <label>
+                        订单备注
+                        <textarea id="orderNote" maxlength="200"></textarea>
+                    </label>
+                    <button class="submit-order-btn" type="submit">确认下单</button>
+                </form>
+            </section>
+        </aside>
+    </main>
+
+    <section class="orders-panel">
+        <div class="panel-header">
+            <div>
+                <p class="eyebrow">付款确认</p>
+                <h2>订单状态与模拟支付</h2>
+            </div>
+            <span class="panel-tip">当前版本提供“模拟付款确认”按钮，后续可接虚拟银行接口。</span>
+        </div>
+        <div id="orderList" class="order-list"></div>
+    </section>
+
+    <section class="integration-panel">
+        <div class="panel-header">
+            <div>
+                <p class="eyebrow">接口预留</p>
+                <h2>尚未落地的跨系统模块</h2>
+            </div>
+        </div>
+        <div class="integration-grid">
+            <article>
+                <h3>虚拟银行支付接口</h3>
+                <p>当前以“模拟付款确认”代替实际银行回调，后续可把订单号、金额、认证凭证推送到独立支付系统。</p>
+            </article>
+            <article>
+                <h3>认证服务系统 / CA</h3>
+                <p>当前项目内已完成 RSA 私钥签名认证，下一阶段可将公钥证书、证书撤销与查询迁移到独立认证服务。</p>
+            </article>
+            <article>
+                <h3>买家与商家信息隔离</h3>
+                <p>现阶段完成了认证和订单基础流程，后续可按 SET 思路继续拆分支付信息、订单信息和银行侧敏感字段。</p>
+            </article>
+        </div>
+    </section>
+
+    <div id="dashboard-msg" class="message"></div>
+    <div id="shop-msg" class="message"></div>
+</div>
+
+<script src="auth.js"></script>
+<script src="shop.js"></script>
+</body>
+</html>

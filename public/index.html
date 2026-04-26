@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="split-screen">
+    <div class="left-panel">
+        <div class="content">
+            <h1>登录界面</h1>
+            <h2>用户登录</h2>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>登录</h2>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名" minlength="3" maxlength="24" autocomplete="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码" minlength="10" maxlength="72" autocomplete="current-password" required>
+                </div>
+
+                <button type="submit" class="login-btn">登录</button>
+            </form>
+
+            <div id="login-msg" class="message"></div>
+            <p class="security-tip">登录分为两步：先校验密码，再使用本地 RSA 私钥对挑战码签名。换设备时可使用邮箱恢复。</p>
+
+            <button id="toggleRecoveryBtn" class="secondary-btn" type="button">新设备邮箱恢复</button>
+
+            <div id="recoveryPanel" class="recovery-panel hidden">
+                <h3>新设备恢复</h3>
+                <form id="recoveryRequestForm">
+                    <div class="input-group">
+                        <label for="recovery-username">用户名</label>
+                        <input type="text" id="recovery-username" placeholder="请输入用户名" maxlength="24" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="recovery-password">密码</label>
+                        <input type="password" id="recovery-password" placeholder="请输入密码" maxlength="72" required>
+                    </div>
+
+                    <button type="submit" class="secondary-btn">发送邮箱验证码</button>
+                </form>
+
+                <form id="recoveryVerifyForm">
+                    <div class="input-group">
+                        <label for="verify-username">用户名</label>
+                        <input type="text" id="verify-username" placeholder="请输入用户名" maxlength="24" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="verify-code">邮箱验证码</label>
+                        <input type="text" id="verify-code" placeholder="请输入 6 位验证码" inputmode="numeric" maxlength="6" required>
+                    </div>
+
+                    <button type="submit" class="secondary-btn">验证邮箱并绑定当前设备</button>
+                </form>
+
+                <div id="recovery-msg" class="message"></div>
+            </div>
+
+            <div class="register-link">
+                <p>没有账号？<a href="register.html">立即注册</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

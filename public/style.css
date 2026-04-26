@@ -1,0 +1,670 @@
+/* Moved from public/style.css */
+/* style.css */
+
+/* ==================== 全局通用样式 ==================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    height: 100%;
+}
+
+/* 消息提示框样式 */
+.message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.message.error { color: #b42318; }
+.message.success { color: #027a48; }
+.message.warning { color: #b54708; }
+.message.info { color: #175cd3; }
+
+/* 统一的按钮样式 */
+.login-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    background: #3a8ef6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+    text-decoration: none;
+}
+.login-btn:hover {
+    background: #2f6fcf;
+    transform: translateY(-2px);
+}
+.logout-btn {
+    background: #e74c3c;
+}
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+/* ==================== 登录和注册页样式 ==================== */
+.split-screen {
+    display: flex;
+    min-height: 100vh;
+}
+.left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #3a8ef6, #6ab7ff);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.left-panel .content {
+    animation: fadeIn 1s ease-in-out;
+}
+.left-panel h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.left-panel h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: slideIn 0.8s ease-out;
+}
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.login-header h2 {
+    font-size: 2rem;
+    color: #333;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+    border-color: #3a8ef6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(58, 142, 246, 0.2);
+}
+.register-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+.register-link a {
+    color: #3a8ef6;
+    text-decoration: none;
+    font-weight: bold;
+}
+.register-link a:hover {
+    text-decoration: underline;
+}
+.secondary-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background: #eef4ff;
+    color: #1d4ed8;
+    border: 1px solid #c7d7fe;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.secondary-btn:hover {
+    background: #dbe8ff;
+    transform: translateY(-1px);
+}
+.recovery-panel {
+    margin-top: 16px;
+    padding: 18px;
+    border: 1px solid #e1e8f5;
+    border-radius: 12px;
+    background: #f8fbff;
+}
+.recovery-panel h3 {
+    margin: 0 0 14px;
+    font-size: 1rem;
+    color: #28416b;
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.security-tip {
+    margin-top: 14px;
+    color: #5b6573;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* 密码强度提示信息样式 */
+.password-info {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.password-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+}
+.password-info li {
+    padding-left: 18px;
+    position: relative;
+    color: #888;
+}
+.password-info li::before {
+    content: 'x';
+    color: red;
+    position: absolute;
+    left: 0;
+}
+.password-info li.valid {
+    color: green;
+}
+.password-info li.valid::before {
+    content: 'v';
+    color: green;
+}
+
+/* ==================== 个人页面样式 ==================== */
+.profile-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+.profile-card h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 15px;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+.info-row:last-of-type { border-bottom: none; }
+.info-label { color: #666; font-weight: 500; }
+.info-value { font-weight: 600; color: #3a8ef6; }
+.nav-links { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+.nav-links .login-btn { font-size: 1rem; padding: 12px 20px; }
+
+/* ==================== 管理员页样式 ==================== */
+.container { max-width: 1200px; margin: 40px auto; background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px; gap: 15px; }
+.topbar h2 { font-size: 1.6rem; color: #333; margin: 0; }
+.search-container { flex-grow: 1; max-width: 400px; position: relative; }
+.search-container input { width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
+.search-container input:focus { border-color: #3a8ef6; box-shadow: 0 0 0 3px rgba(58, 142, 246, 0.2); outline: none; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 14px; text-align: left; border-bottom: 1px solid #f0f2f5; }
+th { background-color: #f9fbff; font-weight: 600; color: #555; }
+tr:nth-child(even) { background-color: #f9fbff; }
+tr:hover { background-color: #f0f7ff; }
+
+/* ==================== 控制台与侧边栏样式 ==================== */
+.dashboard { display:flex; min-height:100vh; }
+.sidebar { width: 260px; background: linear-gradient(135deg, #3a8ef6, #6ab7ff); color: #fff; padding: 24px 16px; box-shadow: 4px 0 20px rgba(0,0,0,0.05); }
+.sidebar .brand { font-size: 1.2rem; font-weight: 600; margin-bottom: 16px; }
+.sidebar .user { background: rgba(255,255,255,0.15); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+.nav-group { display: flex; flex-direction: column; gap: 8px; }
+.nav-btn { display: block; width: 100%; text-align: left; padding: 10px 12px; border-radius: 8px; color: #fff; background: transparent; border: none; cursor: pointer; transition: background 0.2s, transform 0.05s; }
+.nav-btn.active, .nav-btn:hover { background: rgba(255,255,255,0.18); }
+.nav-sep { height: 1px; background: rgba(255,255,255,0.25); margin: 12px 0; }
+.logout { background: #e74c3c; }
+.logout:hover { background: #c0392b; }
+.main { flex: 1; padding: 24px; }
+.card { background:#fff; border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,0.06); }
+.toolbar { display:flex; gap:12px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+.toolbar input { padding:10px 12px; border-radius:8px; border:1px solid #e5e7eb; min-width:220px; }
+
+/* ==================== 响应式设计和动画 ==================== */
+@media (max-width: 768px) {
+    .split-screen { flex-direction: column; }
+    .left-panel { padding: 40px 20px; min-height: 200px; }
+    .left-panel h1 { font-size: 2rem; }
+    .left-panel h2 { font-size: 1.2rem; }
+    .login-container, .profile-card { padding: 28px 22px; }
+    .recovery-panel { padding: 16px 14px; }
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+.shop-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 35%),
+        linear-gradient(135deg, #f6fbff 0%, #eef6ff 42%, #f8f0e7 100%);
+}
+.shop-shell {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px;
+}
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+.brand-kicker, .eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8b5e3c;
+    font-weight: 700;
+}
+.shop-brand h1 {
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1.05;
+    color: #13294b;
+}
+.brand-subtitle {
+    max-width: 760px;
+    margin: 14px 0 0;
+    line-height: 1.7;
+    color: #46556d;
+}
+.shop-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+.session-pill {
+    min-width: 180px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(19, 41, 75, 0.92);
+    color: #fff;
+    box-shadow: 0 18px 32px rgba(19, 41, 75, 0.18);
+}
+.session-pill span {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.75;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.session-pill strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.15rem;
+}
+.logout-action {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 999px;
+    background: #d64545;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+.hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.metric-card, .security-banner, .catalog-panel, .cart-card, .order-card-shell, .orders-panel, .integration-panel {
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(203,214,229,0.75);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 45px rgba(40,65,107,0.08);
+}
+.metric-card {
+    border-radius: 20px;
+    padding: 20px 22px;
+}
+.metric-card span {
+    display: block;
+    color: #6a778c;
+    font-size: 0.9rem;
+}
+.metric-card strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 2rem;
+    color: #163156;
+}
+.security-banner {
+    border-radius: 24px;
+    padding: 24px 26px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+.security-banner h2 {
+    margin: 0 0 8px;
+    color: #163156;
+}
+.security-banner p {
+    margin: 0;
+    color: #52627a;
+    line-height: 1.7;
+    max-width: 780px;
+}
+.security-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #41506a;
+    font-size: 0.95rem;
+}
+.shop-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.8fr);
+    gap: 22px;
+}
+.catalog-panel, .orders-panel, .integration-panel {
+    border-radius: 24px;
+    padding: 24px;
+}
+.checkout-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cart-card, .order-card-shell {
+    border-radius: 24px;
+    padding: 22px;
+}
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+.panel-header h2 {
+    margin: 0;
+    color: #183355;
+}
+.panel-tip {
+    color: #6c7c93;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 360px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.product-card {
+    border-radius: 20px;
+    padding: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid #dde7f3;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.product-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.product-category, .product-badge, .cart-badge, .order-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+.product-category {
+    background: #eef4ff;
+    color: #2554a2;
+}
+.product-badge {
+    background: #fff1e6;
+    color: #a45215;
+}
+.product-card h3 {
+    margin: 0;
+    color: #1d3557;
+    font-size: 1.2rem;
+}
+.product-desc {
+    margin: 0;
+    color: #5c6a80;
+    line-height: 1.65;
+    flex-grow: 1;
+}
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: #41506a;
+}
+.product-meta strong {
+    font-size: 1.35rem;
+    color: #153153;
+}
+.product-btn, .submit-order-btn {
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #163156, #2f6fcf);
+    color: #fff;
+    padding: 12px 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.product-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.cart-list, .order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.cart-item, .order-card {
+    border: 1px solid #e1e8f5;
+    background: #fff;
+    border-radius: 18px;
+    padding: 16px;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+.cart-item p {
+    margin: 6px 0 0;
+    color: #627086;
+}
+.cart-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cart-actions button {
+    border: 1px solid #d7e2f1;
+    background: #f6f9ff;
+    color: #163156;
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed #d9e2ef;
+    color: #183355;
+}
+.cart-total-row strong {
+    font-size: 1.4rem;
+}
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.order-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #47556c;
+    font-weight: 600;
+}
+.order-form input, .order-form textarea {
+    border: 1px solid #d8e3f0;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.98rem;
+    background: #fff;
+}
+.order-form textarea {
+    min-height: 86px;
+    resize: vertical;
+}
+.order-head, .order-foot, .order-item-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+.order-head {
+    align-items: center;
+}
+.order-head div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.order-head span {
+    color: #6b7a8f;
+    font-size: 0.9rem;
+}
+.order-status {
+    background: #eef9f1;
+    color: #16794d;
+}
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0;
+}
+.order-item-row {
+    color: #4f5f77;
+}
+.order-foot {
+    align-items: flex-end;
+}
+.order-foot p {
+    margin: 0 0 6px;
+    color: #56657b;
+}
+.order-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+.integration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+.integration-grid article {
+    border-radius: 18px;
+    padding: 18px;
+    background: linear-gradient(180deg, #fff 0%, #fbfcfe 100%);
+    border: 1px solid #dde6f3;
+}
+.integration-grid h3 {
+    margin: 0 0 10px;
+    color: #183355;
+}
+.integration-grid p, .empty-state {
+    margin: 0;
+    color: #5f6e84;
+    line-height: 1.7;
+}
+
+@media (max-width: 1080px) {
+    .hero-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shop-layout { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr; }
+    .integration-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .shop-shell { padding: 18px; }
+    .shop-header, .security-banner, .panel-header, .order-head, .order-foot, .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .shop-brand h1 { font-size: 2.2rem; }
+    .hero-metrics { grid-template-columns: 1fr; }
+    .shop-actions { align-items: stretch; width: 100%; }
+    .session-pill { width: 100%; box-sizing: border-box; }
+    .order-action { align-items: flex-start; width: 100%; }
+}

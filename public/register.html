@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册界面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="split-screen">
+    <div class="left-panel">
+        <div class="content">
+            <h1>注册界面</h1>
+            <h2>用户注册</h2>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>注册</h2>
+            </div>
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="reg-username">用户名</label>
+                    <input type="text" id="reg-username" name="reg-username" placeholder="请输入用户名" minlength="3" maxlength="24" autocomplete="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="reg-email">邮箱</label>
+                    <input type="email" id="reg-email" name="reg-email" placeholder="请输入邮箱地址" maxlength="120" autocomplete="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="reg-password">密码</label>
+                    <input type="password" id="reg-password" name="reg-password" placeholder="请输入密码" minlength="10" maxlength="72" autocomplete="new-password" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-password">确认密码</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="请再次输入密码" minlength="10" maxlength="72" autocomplete="new-password" required>
+                </div>
+
+                <div id="password-strength-info" class="password-info">
+                    <p>密码应包含：</p>
+                    <ul>
+                        <li id="length-check">至少10个字符</li>
+                        <li id="case-check">包含大小写字母</li>
+                        <li id="number-check">包含数字</li>
+                        <li id="special-check">包含特殊字符（如 !@#$%^&*）</li>
+                    </ul>
+                </div>
+
+                <button type="submit" class="login-btn">注册</button>
+            </form>
+
+            <div id="reg-msg" class="message"></div>
+            <p class="security-tip">注册时会绑定邮箱并本地生成 RSA 密钥对。跨设备时可通过邮箱验证码重新绑定新设备公钥。</p>
+
+            <div class="register-link">
+                <p>已有账号？<a href="index.html">去登录</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

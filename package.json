@@ -1,0 +1,29 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "keywords": [
+    "express",
+    "security",
+    "auth"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Secure auth demo for course project",
+  "dependencies": {
+    "argon2": "^0.44.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
+    "mysql2": "^3.22.1",
+    "nodemailer": "^8.0.5",
+    "zod": "^4.3.6"
+  }
+}
